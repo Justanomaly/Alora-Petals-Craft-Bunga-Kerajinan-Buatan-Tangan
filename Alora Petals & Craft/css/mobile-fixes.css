@@ -1,0 +1,126 @@
+/* Perbaikan tampilan HP & komponen tambahan (dimuat setelah tailwind-build.css) */
+
+/* Nama brand di header: jangan terpotong di HP (boleh turun ke 2 baris) */
+@media (max-width: 479px) {
+  .brand-name {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 1.05rem !important;
+    line-height: 1.15 !important;
+  }
+}
+
+/* Tombol tambah keranjang: di HP cukup ikon saja */
+@media (max-width: 639px) {
+  .btn-add .btn-label {
+    display: none;
+  }
+  .btn-add {
+    justify-content: center;
+  }
+  .btn-add.btn-add-card {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 !important;
+  }
+}
+
+/* Thumbnail foto di halaman detail: di HP dibuat grid (maks. 3 per baris) supaya tidak melebar ke samping */
+@media (max-width: 639px) {
+  #thumbs {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem !important;
+  }
+  #thumbs .thumb-btn {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* Halaman Tentang: satu foto. Fotonya logo persegi, jadi ditampilkan utuh (tidak dipotong) di atas warna latar yang sama dengan fotonya. */
+.about-photo {
+  background: #fcfbf6;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+@media (min-width: 640px) {
+  .about-photo img {
+    aspect-ratio: auto;
+    height: 26rem;
+  }
+}
+
+/* Halaman Custom: grid pilihan warna (3 kolom di HP, lebih banyak di layar lebar) */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+@media (min-width: 640px) {
+  .color-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+.color-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 0.3rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  min-width: 0;
+}
+.color-opt .swatch {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  display: block;
+}
+.color-opt .color-name {
+  font-size: 0.75rem;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+/* Keranjang di HP: foto + nama di baris pertama, tombol jumlah & hapus di baris kedua (tidak terjepit/keluar kartu) */
+@media (max-width: 639px) {
+  .cart-row {
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem !important;
+  }
+  .cart-info {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .cart-controls {
+    flex: 0 0 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Area sentuh yang lebih nyaman di HP */
+@media (max-width: 639px) {
+  .var-btn,
+  .cat-btn {
+    min-height: 2.25rem;
+  }
+  header a.group {
+    padding: 0.6rem 0;
+  }
+}
+
+/* Beranda (hero): label "Alora Autumn" digeser ke kanan supaya tidak tertutup foto kecil di kiri bawah */
+@media (min-width: 640px) {
+  .hero-label {
+    left: 7.75rem !important;
+  }
+}
